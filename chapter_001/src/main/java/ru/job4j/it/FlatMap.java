@@ -20,8 +20,6 @@ public class FlatMap<T> implements Iterator<T> {
         return cursor != null && cursor.hasNext();
     }
 
-    // Метод next должен последовательно вернуть числа из вложенных итераторов.
-
     @Override
     public T next() {
         if (!hasNext()) {

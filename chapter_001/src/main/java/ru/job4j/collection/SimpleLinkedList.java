@@ -6,17 +6,16 @@ import java.util.NoSuchElementException;
 import java.util.Objects;
 
 public class SimpleLinkedList<E> implements Iterable<E> {
-    private Node<E> first;
+    private Node<E> head;
     private int size = 0;
     private int modCount = 0;
-
     public void add(E value) {
         modCount++;
         size++;
-        if (first == null) {
-            first = new Node<>(value, null);
+        if (head == null) {
+            head = new Node<>(value, null);
         } else {
-            Node<E> last = first;
+            Node<E> last = head;
             while (last.next != null) {
                 last = last.next;
             }
@@ -26,7 +25,7 @@ public class SimpleLinkedList<E> implements Iterable<E> {
 
     public E get(int index) {
         Objects.checkIndex(index, size);
-        Node<E> resultNode = first;
+        Node<E> resultNode = head;
         for (int i = 0; i < index; i++) {
             resultNode = resultNode.next;
         }
@@ -36,7 +35,7 @@ public class SimpleLinkedList<E> implements Iterable<E> {
     @Override
     public Iterator<E> iterator() {
         return new Iterator<>() {
-            private Node<E> node = first;
+            private Node<E> node = head;
             private final int expectedModCount = modCount;
 
             @Override

@@ -1,54 +1,34 @@
 package ru.job4j.collection;
+
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 public class ForwardLinked<T> implements Iterable<T> {
     private Node<T> head;
 
-    public void add (T value){
-        Node<T> first = new Node<>(value, head);
-        head = first;
-    }
-
-    public T get(int index) {
-        Node<T> resultNode = head;
-        for (int i = 0; i < index; i++) {
-            resultNode = resultNode.next;
-        }
-        return resultNode.value;
-    }
-
-    public void deleteFirst() {
+    public void add(T value) {
+        Node<T> node = new Node<>(value, null);
         if (head == null) {
-            throw new NoSuchElementException();
-        } else {
-            Node<T> node = head;
-            head = node.next;
+            head = node;
+            return;
         }
+        Node<T> tail = head;
+        while (tail.next != null) {
+            tail = tail.next;
+        }
+        tail.next = node;
     }
 
-    public void deleteLast(){
-        if (head == null) {
-            throw new NoSuchElementException();
-        } else {
-            Node<T> node = head;
-            head = node.next;
-        }
-    }
-
-    public void revert() {
+    public T deleteFirst() {
         if (head == null) {
             throw new NoSuchElementException();
         }
-        Node<T> tmp;
-        Node<T> current = head.next;
-        while (current != null) {
-            tmp = head;
-            head = current;
-            current = head.next;
-            head.next = tmp;
-        }
+        Node<T> node = head;
+        head = head.next;
+        return node.value;
+
     }
+
     @Override
     public Iterator<T> iterator() {
         return new Iterator<>() {

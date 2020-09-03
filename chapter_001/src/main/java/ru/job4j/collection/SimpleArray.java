@@ -30,7 +30,7 @@ public class SimpleArray<T> implements Iterable<T> {
         return new Iterator<>() {
             private final Object[] array = objects;
             private int index = 0;
-            private int expectedModCount = modCount;
+            private final int expectedModCount = modCount;
 
             @Override
             public boolean hasNext() {

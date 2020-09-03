@@ -6,7 +6,7 @@ public class SimpleArray<T> implements Iterable<T> {
 
     Object[] objects;
     int index = 0;
-    int size = objects.length;
+    final int size = objects.length;
 
     public void add(T model) {
         this.objects[index++] = model;

@@ -4,9 +4,9 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 public class ArrayIter<T> implements Iterator<T> {
-    private Object[] objects;
+    private final Object[] objects;
     private int point = 0;
-    private int currentLength;
+    private final int currentLength;
 
     public ArrayIter(Object[] objects, int currentLength) {
         this.objects = objects;

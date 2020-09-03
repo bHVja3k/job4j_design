@@ -5,7 +5,6 @@ import java.util.Iterator;
 public class SimpleStack<T> {
     private ForwardLinked<T> linked = new ForwardLinked<>();
 
-    // Метод pop() - должен возвращать значение и удалять его из коллекции.
     public T pop() {
         Iterator<T> it = linked.iterator();
         T rsl = it.next();
@@ -13,8 +12,7 @@ public class SimpleStack<T> {
         return rsl;
     }
 
-    //Метод push(T value) - помещает значение в коллекцию.
     public void push(T value) {
-        linked.add(value);
+        linked.addFirst(value);
     }
 }

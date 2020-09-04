@@ -24,7 +24,6 @@ public class SimpleArray<T> implements Iterable<T> {
         this.modCount++;
     }
 
-
     @Override
     public Iterator<T> iterator() {
         return new Iterator<>() {
@@ -45,6 +44,7 @@ public class SimpleArray<T> implements Iterable<T> {
                 if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
+
                 return (T) array[index++];
             }
         };

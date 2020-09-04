@@ -9,6 +9,7 @@ public class SimpleLinkedList<E> implements Iterable<E> {
     private Node<E> head;
     private int size = 0;
     private int modCount = 0;
+
     public void add(E value) {
         modCount++;
         size++;

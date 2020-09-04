@@ -2,8 +2,8 @@ package ru.job4j.collection;
 
 import java.util.Calendar;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
+import java.util.Objects;
 
 public class User {
     private final String name;
@@ -34,12 +34,16 @@ public class User {
         Map<User, Object> users = new HashMap<>();
         users.put(ivan, 1);
         users.put(petr, 2);
-        Iterator<Map.Entry<User, Object>> iterator = users.entrySet().iterator();
-        while (iterator.hasNext()) {
-            Map.Entry<User, Object> pair = iterator.next();
+        for (Map.Entry<User, Object> pair : users.entrySet()) {
             User key = pair.getKey();
             Object value = pair.getValue();
             System.out.println(value + ":name-" + key.name + " children-" + key.children);
         }
+
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getName(), getChildren(), getBirthday());
     }
 }
